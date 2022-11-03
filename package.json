@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@discordjs/rest": "^1.0.1",
+    "chartjs-node-canvas": "^4.1.6",
+    "chartjs-plugin-datalabels": "^2.0.0",
+    "currencies.json": "^1.0.2",
+    "discord.js": "^14.0.3",
+    "moment": "^2.29.4",
+    "mongodb": "^4.8.1",
+    "multiversus.js": "github:steven4547466/multiversus.js#cjs"
+  }
+}
