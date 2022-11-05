@@ -16,8 +16,6 @@ const client = new Client({ intents: new IntentsBitField([IntentsBitField.Flags.
 const commands = []
 const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"))
 
-const templatesToRequest = ["1v1", "2v2", "ffa"]
-
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`)
   commands.push(command)
