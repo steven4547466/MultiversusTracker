@@ -3,5 +3,8 @@
   "steamName": "",
   "steamPassword": "",
   "steamNameMatches": "",
-  "steamPasswordMatches": ""
+  "steamPasswordMatches": "",
+  "enableMongoDatabase": false,
+  "mongoDatabaseUrl": "mongodb://0.0.0.0:27017",
+  "mongoDatabaseName": "multiversustracker"
 }

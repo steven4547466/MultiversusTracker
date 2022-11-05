@@ -26,6 +26,9 @@ module.exports = {
       return;
     }
 
+    if (!config.enableMongoDatabase)
+      return interaction.editReply("This feature is not enabled.")
+
     await interaction.client.db.collection('linkedUsers').deleteOne({ _id: interaction.user.id })
 
     interaction.editReply({ content: "Account unlinked.", ephemeral: true })

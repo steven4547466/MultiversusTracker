@@ -663,7 +663,7 @@ async function checkForMatchUpdates() {
 
   console.log("Operation complete. Took " + (Date.now() - startedAt) / 60000 + " minutes.")
 
-  await wait(1800000)
+  await wait(1800000) // Added because it was literally using 60TB of network bandwidth a month. The api is not optimized for bulk data requests like this and will run you out of bandwidth.
 
   checkForMatchUpdates()
 }
@@ -671,14 +671,14 @@ async function checkForMatchUpdates() {
 
 client = new MultiversusClient(config.steamNameMatches, config.steamPasswordMatches)
 
-// client.localAddress = "" // If you have multiple IPs, you can set this to the IP you want to use so the bot doesn't use the same rate limit as the match tracker.
+// client.localAddress = "" // If you have multiple IPs, you can set this to the IP you want to use so the bot doesn't use the same rate limit as the bot.
 
 client.on("ready", async () => {
-  let mongoClient = new MongoClient("mongodb://0.0.0.0:27017");
+  let mongoClient = new MongoClient(config.mongoDatabaseUrl)
 
   await mongoClient.connect()
 
-  db = mongoClient.db("multiversustracker")
+  db = mongoClient.db(config.mongoDatabaseName)
 
   checkForMatchUpdates()
 })

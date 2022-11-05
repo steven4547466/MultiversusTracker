@@ -51,6 +51,9 @@ module.exports = {
       return;
     }
 
+    if (!config.enableMongoDatabase)
+      return interaction.editReply("This feature is not enabled.")
+
     try {
       let user
       try {

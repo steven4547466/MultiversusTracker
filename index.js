@@ -25,12 +25,15 @@ client.on("ready", async () => {
   console.log(`Logged in as ${client.user.tag}!`)
   console.log(client.guilds.cache.size)
   client.MultiversusClient = new MultiversusClient(config.steamName, config.steamPassword)
-  client.MongoClient = new MongoClient("mongodb://0.0.0.0:27017");
 
-  await client.MongoClient.connect()
+  if (config.enableMongoDatabase) {
+    client.MongoClient = new MongoClient(config.mongoDatabaseUrl)
 
-  client.db = client.MongoClient.db("multiversustracker")
-  console.log("Database connected")
+    await client.MongoClient.connect()
+  
+    client.db = client.MongoClient.db(config.mongoDatabaseName)
+    console.log("Database connected")
+  }
 })
 
 client.on("interactionCreate", async (interaction) => {
